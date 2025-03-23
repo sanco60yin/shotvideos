@@ -25,9 +25,14 @@ fi
 
 if [ ! -f "$v_srt_file" ]; then
     whisper "$a_file" --model small --language English --output_format srt
-    cp $v_srt_file $v_tr_srt
 else
     echo "srt file is there: $v_srt_file"
+fi
+
+if [ ! -f "$v_tr_srt" ]; then
+    cp $v_srt_file $v_tr_srt
+else
+    echo "srt file is there: $v_tr_srt"
 fi
 
 while true; do
@@ -44,3 +49,4 @@ else
 fi
 
 echo "sub video file done: ${v_sub_file} !!!"
+
